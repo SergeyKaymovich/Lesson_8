@@ -7,17 +7,20 @@ public class UserInputUtils {
 
     }
 
-    public static int[] userInput(){
+    public static int[] userInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите размер массива: ");
         int input = scanner.nextInt();
-        int[] a =  new int[input];
+        if (input < 0) {
+            throw new IllegalArgumentException("Negative number of elements.");
+        }
+        int[] filling = new int[input];
         System.out.println("Заполните его числами: ");
         for (int i = 0; i < input; i++) {
-            a[i] = scanner.nextInt();
+            filling[i] = scanner.nextInt();
             scanner.nextLine();
         }
-        System.out.println(Arrays.toString(a));
-        return  a;
+        System.out.println(Arrays.toString(filling));
+        return filling;
     }
 }
